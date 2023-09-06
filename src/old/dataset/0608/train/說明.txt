@@ -1,0 +1,2 @@
+manned   -> walk + stand
+unmanned -> sit  + squat

@@ -1,0 +1,73 @@
+"""
+程式碼功能:
+    將補 0 後的數據子載波進行歸一化 (normalization)
+    將歸一化的子載波轉換成矩陣
+normalization : https://medium.com/jameslearningnote/%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90-%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92-%E7%AC%AC2-4%E8%AC%9B-%E8%B3%87%E6%96%99%E5%89%8D%E8%99%95%E7%90%86-missing-data-one-hot-encoding-feature-scaling-3b70a7839b4a
+
+放在 list_to_matrix_to_photo.py 的 print('補0後的數據子載波 : ', data_sub) 之後
+"""
+	# --------------------------------------------------------------------------------------------------------------
+        # 計算補 0 前的歸一化值
+        # 計算每列的最大值和最小值
+        # print(max(data_sub[0:20]))
+        # print(min(data_sub[25:]))
+        # max_vals = float(max(data_sub[0:20]))
+        # min_vals = float(min(data_sub[25:]))
+        # print('Maximum : ', max_vals, 'At index:', data_sub.index(max_vals))
+        # print('Minimum : ', min_vals, 'At index:', data_sub.index(min_vals))
+
+        # 進行歸一化 (normalization) 計算
+        # arr = np.array(data_sub)
+        # normalized_arr = []
+        # for n in data_sub:
+            # normalized_arr.append(format((float(n) - min_vals) / (max_vals - min_vals), '.3f'))
+        # print('補0前正歸化 : ', normalized_arr)
+
+        # 進行正歸化，將其轉換到 0 到 255 之間
+        # scale_factor = 255
+        # normalization_piexl = []
+        # for x in normalized_arr:
+            # normalization_piexl.append(format(float(x) * scale_factor, '.3f'))
+
+        # print('補0前正歸化(0~255) : ', normalization_piexl)
+        # --------------------------------------------------------------------------------------------------------------
+
+
+	# --------------------------------------------------------------------------------------------------------------
+        # 計算補 0 後的歸一化值
+        # 計算每列的最大值和最小值
+        # print(max(data_sub[0:20]))
+        max_val = float(max(data_sub[0:20]))
+        min_val = float(0)
+        # print('Maximum : ', max_vals)
+        # print('Minimum : ', min_vals)
+
+        # 進行歸一化 (normalization) 計算
+        # arr = np.array(data_sub)
+        normalized_arr = []
+        for n in data_sub:
+            normalized_arr.append(format((float(n) - min_val) / (max_val - min_val), '.3f'))
+        # print('補0後正歸化 : ', normalized_arr)
+
+        # 進行正歸化，將其轉換到 0 到 255 之間
+        scale_factor = 255
+        normalization_piexl = []
+        normalization_piexl_float = []
+        for x in normalized_arr:
+            normalization_piexl.append(int(float(x) * scale_factor))
+            normalization_piexl_float.append(format(float(x) * scale_factor, '.3f'))
+
+        print('正歸化(0~255) : ', normalization_piexl)
+        # --------------------------------------------------------------------------------------------------------------
+        # 將正歸化的子載波轉換成矩陣
+        # matrix = []
+        # while normalization_piexl != []:
+            # matrix.append(normalization_piexl[:8])
+            # normalization_piexl = normalization_piexl[8:]
+        # print('數據子載波的矩陣', matrix)
+        # print(type(matrix))
+
+        matrix_normalization = list(np.array_split(normalization_piexl, 8))
+        matrix = np.array(matrix_normalization)
+        print('數據子載波的矩陣 : \n', matrix)
+        # print(type(matrix))

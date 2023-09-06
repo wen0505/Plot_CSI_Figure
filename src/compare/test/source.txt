@@ -1,0 +1,50 @@
+cd C:\PythonProject\plot_csi_figure\src
+python parse_csi_wen.py
+python parse_csi_sit.py
+python parse_csi_stand.py
+
+start 2586
+
+no_people
+my-experient-no-people_1.csv
+
+my-experient-no-people_2.csv
+
+my-experient-no-people_3.csv
+
+people
+直線
+my-experient-people_1.csv
+
+my-experient-people_2.csv
+
+橫線
+my-experient-people_3.csv
+
+my-experient-people_4.csv
+
+坐著
+右
+sit_1.csv
+
+左
+sit_2.csv
+
+前
+sit_3.csv
+
+後
+sit_4.csv
+
+站著
+右
+stand_1.csv
+
+左
+stand_2.csv
+
+前
+stand_3.csv
+
+後
+stand_4.csv
